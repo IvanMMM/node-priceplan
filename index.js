@@ -1,6 +1,6 @@
 "use strict";
 /*
-    API ê http://docs.priceplan.ru
+    API Ðº http://docs.priceplan.ru
  */
 
 const util = require("util");
@@ -54,155 +54,155 @@ class PP{
 let exceptions = {
     '-1':function(){
         this.name = "Unknown";
-        this.message = `Ïðîèçîøëà íåèçâåñòíàÿ îøèáêà`;
-     },
+        this.message = `ÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð½ÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ°`;
+    },
     '1':function(){
         this.name = "Duplicate";
-        this.message = `Äóáëèêàò çíà÷åíèÿ`;
+        this.message = `Ð”ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ‚ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ`;
     },
     '2':function(){
         this.name = "EmptyValue";
-        this.message = `Ïóñòîå çíà÷åíèíå`;
+        this.message = `ÐŸÑƒÑÑ‚Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð½Ðµ`;
     },
     '3':function(){
         this.name = "InvalidArgument";
-        this.message = `Íåêîððåêòíûé àðãóìåíò`;
+        this.message = `ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð°Ñ€Ð³ÑƒÐ¼ÐµÐ½Ñ‚`;
     },
     '4':function(){
         this.name = "MissingArgument";
-        this.message = `Íå óêàçàí àðãóìåíò`;
+        this.message = `ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½ Ð°Ñ€Ð³ÑƒÐ¼ÐµÐ½Ñ‚`;
     },
     '5':function(){
         this.name = "InvalidData";
-        this.message = `Íåêîððåêòíûå äàííûå`;
+        this.message = `ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ`;
     },
     '6':function(){
         this.name = "ObjectNotFound";
-        this.message = `Îáúåêò íå íàéäåí`;
+        this.message = `ÐžÐ±ÑŠÐµÐºÑ‚ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½`;
     },
     '7':function(){
         this.name = "BadRequest";
-        this.message = `Íåâåðíûé çàïðîñ`;
+        this.message = `ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð·Ð°Ð¿Ñ€Ð¾Ñ`;
     },
     '8':function(){
         this.name = "Trigger";
-        this.message = `Îøèáêà Trigger`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° Trigger`;
     },
     '9':function(){
         this.name = "FewResources";
-        this.message = `Îøèáêà FewResources`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° FewResources`;
     },
     '10':function(){
         this.name = "NoFunds";
-        this.message = `Îøèáêà NoFunds`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° NoFunds`;
     },
     '11':function(){
         this.name = "Data";
-        this.message = `Îøèáêà Data`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° Data`;
     },
     '12':function(){
         this.name = "MissingVariable";
-        this.message = `Îøèáêà MissingVariable`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° MissingVariable`;
     },
     '13':function(){
         this.name = "ObjectLocked";
-        this.message = `Îáúåêò çàáëîêèðîâí äëÿ ðåäàêòèðîâàíèÿ`;
+        this.message = `ÐžÐ±ÑŠÐµÐºÑ‚ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð½ Ð´Ð»Ñ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ`;
     },
     '14':function(){
         this.name = "InvoiceLineAlresdyUsed";
-        this.message = `Îøèáêà InvoiceLineAlresdyUsed`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° InvoiceLineAlresdyUsed`;
     },
     '15':function(){
         this.name = "Invoiced";
-        this.message = `C÷åò óæå âûñòàâëåí`;
+        this.message = `CÑ‡ÐµÑ‚ ÑƒÐ¶Ðµ Ð²Ñ‹ÑÑ‚Ð°Ð²Ð»ÐµÐ½`;
     },
     '16':function(){
         this.name = "ObjectBlocked";
-        this.message = `Îáúåêò çàáëîêèðîâàí`;
+        this.message = `ÐžÐ±ÑŠÐµÐºÑ‚ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½`;
     },
     '17':function(){
         this.name = "Obsolete";
-        this.message = `Îøèáêà Obsolete`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° Obsolete`;
     },
     '18':function(){
         this.name = "IncorrectBlockMode";
-        this.message = `Òàêîé òèï áëîêèðîâêè óæå ñóùåñòâóåò`;
+        this.message = `Ð¢Ð°ÐºÐ¾Ð¹ Ñ‚Ð¸Ð¿ Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²ÐºÐ¸ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚`;
     },
     '19':function(){
         this.name = "IncorrectBlockDate";
-        this.message = `Íåâåðíàÿ äàòà áëîêèðâîêè`;
+        this.message = `ÐÐµÐ²ÐµÑ€Ð½Ð°Ñ Ð´Ð°Ñ‚Ð° Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð²Ð¾ÐºÐ¸`;
     },
     '20':function(){
         this.name = "IncorrectBlockOutdated";
-        this.message = `Äàòà áëîêèðîâêè óæå óñòàðåëà`;
+        this.message = `Ð”Ð°Ñ‚Ð° Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²ÐºÐ¸ ÑƒÐ¶Ðµ ÑƒÑÑ‚Ð°Ñ€ÐµÐ»Ð°`;
     },
     '21':function(){
         this.name = "FilesizeExceeded";
-        this.message = `Ïðåâûøåí ìàêñèìàëüíûé ðàçìåð ôàéëà`;
+        this.message = `ÐŸÑ€ÐµÐ²Ñ‹ÑˆÐµÐ½ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ñ„Ð°Ð¹Ð»Ð°`;
     },
     '22':function(){
         this.name = "QueueExceeded";
-        this.message = `Î÷åðåäü ïåðåïîëíåíà`;
+        this.message = `ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð¿ÐµÑ€ÐµÐ¿Ð¾Ð»Ð½ÐµÐ½Ð°`;
     },
     '23':function(){
         this.name = "DublicateField";
-        this.message = `Îøèáêà DublicateField`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° DublicateField`;
     },
     '24':function(){
         this.name = "ExcludingField";
-        this.message = `Îøèáêà ExcludingField`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° ExcludingField`;
     },
     '25':function(){
         this.name = "UnknownField";
-        this.message = `Îøèáêà UnknownField`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° UnknownField`;
     },
     '26':function(){
         this.name = "UnknownArgument";
-        this.message = `Îøèáêà UnknownArgument`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° UnknownArgument`;
     },
     '27':function(){
         this.name = "BillingAlreadyStarted";
-        this.message = `Áèëëèíã óæå çàïóùåí`;
+        this.message = `Ð‘Ð¸Ð»Ð»Ð¸Ð½Ð³ ÑƒÐ¶Ðµ Ð·Ð°Ð¿ÑƒÑ‰ÐµÐ½`;
     },
     '28':function(){
         this.name = "BalanceAboveZero";
-        this.message = `Ó êëèåíòà íå íóëåâîé áàëàíñ (íåëüçÿ óäàëèòü)`;
+        this.message = `Ð£ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð° Ð½Ðµ Ð½ÑƒÐ»ÐµÐ²Ð¾Ð¹ Ð±Ð°Ð»Ð°Ð½Ñ (Ð½ÐµÐ»ÑŒÐ·Ñ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ)`;
     },
     '29':function(){
         this.name = "HasSubscribe";
-        this.message = `Îøèáêà HasSubscribe`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° HasSubscribe`;
     },
     '30':function(){
         this.name = "ForbiddenValue";
-        this.message = `Çàïðåùåííîå çíà÷åíèíå`;
+        this.message = `Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð½Ðµ`;
     },
     '31':function(){
         this.name = "NegativeAmount";
-        this.message = `Îøèáêà negative_amount`;
+        this.message = `ÐžÑˆÐ¸Ð±ÐºÐ° negative_amount`;
     },
     '32':function(){
         this.name = "StackOverflow";
-        this.message = `Cêîðåå âñåãî ïîñëåäîâàòåëüíîñòü ñîçäàííûõ ïðàâèë âûçâàëà áåñêîíå÷íûé öèêë`;
+        this.message = `CÐºÐ¾Ñ€ÐµÐµ Ð²ÑÐµÐ³Ð¾ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¿Ñ€Ð°Ð²Ð¸Ð» Ð²Ñ‹Ð·Ð²Ð°Ð»Ð° Ð±ÐµÑÐºÐ¾Ð½ÐµÑ‡Ð½Ñ‹Ð¹ Ñ†Ð¸ÐºÐ»`;
     },
     '33':function(){
         this.name = "InvalidStatus";
-        this.message = `Íåâåðíûé ñòàòóñ`;
+        this.message = `ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ`;
     },
     '34':function(){
         this.name = "NoFundsRevenues";
-        this.message = `Ñðåäñòâà íå ïîñòóïàëè`;
+        this.message = `Ð¡Ñ€ÐµÐ´ÑÑ‚Ð²Ð° Ð½Ðµ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð°Ð»Ð¸`;
     },
     '35':function(){
         this.name = "BlockLicence";
-        this.message = `Ëèöåíçèÿ çàáëîêèðîâàíà`;
+        this.message = `Ð›Ð¸Ñ†ÐµÐ½Ð·Ð¸Ñ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð°`;
     },
     '36':function(){
         this.name = "MaximumClients";
-        this.message = `Ìàêñèìàëüíîå ÷èñëî êèëåíòîâ`;
+        this.message = `ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ ÐºÐ¸Ð»ÐµÐ½Ñ‚Ð¾Ð²`;
     },
     '37':function(){
         this.name = "VarIsUsed";
-        this.message = `Çíà÷åíèå èñïîëüçóåòñÿ`;
+        this.message = `Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ`;
     },
 };
 Object.keys(exceptions).forEach((key,i)=>{
