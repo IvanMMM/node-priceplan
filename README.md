@@ -3,7 +3,12 @@
 This is a simple Promise based module to work with [PricePlan API](http://docs.priceplan.ru/)
 
 ## Usage
+### Available methods:
+* get(endpoint,[data])
+* post(endpoint,[data])
+* delete(endpoint,[data])
 
+### Example
 ```javascript
 const PP = require('priceplan');
 let pp = new PP('https://yourdomain.priceplan.pro/api/','yourUser','yourApiKey');
@@ -20,7 +25,13 @@ let user = {
     type:2,
     signed_values:{id:"someInternalId"}
 }
-pp.post(`clients/`,user);
+pp.post(`clients/`,user)
+.then(results=>{
+    ...
+})
+
+//Delete User
+pp.delete(`clients/1`)
 .then(results=>{
     ...
 })

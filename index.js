@@ -44,6 +44,10 @@ class PP{
         return this.request.call(this,endpoint,params,"POST")
     }
 
+    delete(endpoint,params={}){
+        return this.request.call(this,endpoint,params,"DELETE")
+    }
+
     request(endpoint,params={},method='GET'){
         let signedParams;
         if(method==='GET'){
