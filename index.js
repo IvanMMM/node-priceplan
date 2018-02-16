@@ -19,13 +19,13 @@ class PP{
         this._key = key;
 
         this.baseParams = {
-            user:this._user
+            user:this._user,
+            v: 0.1
         };
     }
 
     sign(params={}){
         if(typeof params !== 'object') throw new TypeError(`Params must be an Object`);
-        params = Object.assign({},this.baseParams,params);
 
         const ordered = {};
         Object.keys(params).sort().forEach(function(key) {
@@ -36,18 +36,39 @@ class PP{
         return ordered;
     }
 
-    get(endpoint,params,method='GET'){
-        params = this.sign(params);
-        return rp({
+    get(endpoint,params={}){
+        return this.request.call(this,endpoint,params,"GET")
+    }
+
+    post(endpoint,params={}){
+        return this.request.call(this,endpoint,params,"POST")
+    }
+
+    request(endpoint,params={},method='GET'){
+        let signedParams;
+        if(method==='GET'){
+            signedParams = Object.assign({},this.baseParams,params);
+        }else{
+            signedParams = this.baseParams;
+        }
+        signedParams = this.sign(signedParams);
+        let options = {
             url:`${this._baseurl}key/${endpoint}`,
             method:method,
-            qs:params,
-            json:true
-        })
-        .then(body=>{
-            if(body.success===true) return body;
-            throw new exceptions[body.errors[0].code.toString()]();
-        })
+            json:true,
+            //rejectUnauthorized: false,
+        };
+        if(method==="GET"){
+            options.qs = signedParams;
+        }else{
+            options.qs = signedParams;
+            options.json = params;
+        }
+        return rp(options)
+            .then(body=>{
+                if(body.success===true) return body;
+                throw new exceptions[body.errors[0].code.toString()]();
+            })
     }
 }
 
