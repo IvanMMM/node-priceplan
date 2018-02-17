@@ -4,36 +4,18 @@
  */
 
 const util = require("util");
-const crypto = require('crypto');
 const qs = require('querystring');
 const rp = require('request-promise');
 
 class PP{
-    constructor(baseurl,user,key){
+    constructor(baseurl,key,password){
         if(!baseurl) throw new Error(`Invalid URL`);
-        if(!user) throw new Error(`Invalid User`);
         if(!key) throw new Error(`Invalid Key`);
+        if(!password) throw new Error(`Invalid Password`);
 
         this._baseurl = baseurl;
-        this._user = user;
         this._key = key;
-
-        this.baseParams = {
-            user:this._user,
-            v: 0.1
-        };
-    }
-
-    sign(params={}){
-        if(typeof params !== 'object') throw new TypeError(`Params must be an Object`);
-
-        const ordered = {};
-        Object.keys(params).sort().forEach(function(key) {
-            ordered[key] = params[key];
-        });
-
-        ordered['token']=crypto.createHash('md5').update(qs.stringify(ordered)+this._key).digest("hex");
-        return ordered;
+        this._password = password;
     }
 
     get(endpoint,params={}){
@@ -49,25 +31,22 @@ class PP{
     }
 
     request(endpoint,params={},method='GET'){
-        let signedParams;
-        if(method==='GET'){
-            signedParams = Object.assign({},this.baseParams,params);
-        }else{
-            signedParams = this.baseParams;
-        }
-        signedParams = this.sign(signedParams);
         let options = {
             url:`${this._baseurl}key/${endpoint}`,
             method:method,
             json:true,
-            //rejectUnauthorized: false,
+            rejectUnauthorized: false,
+            auth:{
+                user:this._key,
+                pass:this._password,
+            }
         };
         if(method==="GET"){
-            options.qs = signedParams;
+            options.qs = params;
         }else{
-            options.qs = signedParams;
             options.json = params;
         }
+        console.log(options);
         return rp(options)
             .then(body=>{
                 if(body.success===true) return body;

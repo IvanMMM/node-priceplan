@@ -11,7 +11,7 @@ This is a simple Promise based module to work with [PricePlan API](http://docs.p
 ### Example
 ```javascript
 const PP = require('priceplan');
-let pp = new PP('https://yourdomain.priceplan.pro/api/','yourUser','yourApiKey');
+let pp = new PP('https://yourdomain.priceplan.pro/api/','userApiKey','userPassword');
 
 //Get Users
 pp.get(`clients/`)
