@@ -1,6 +1,6 @@
 {
   "name": "priceplan",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simple API for PricePlan service",
   "main": "index.js",
   "scripts": {
