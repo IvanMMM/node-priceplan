@@ -46,12 +46,11 @@ class PP{
         }else{
             options.json = params;
         }
-        console.log(options);
         return rp(options)
-            .then(body=>{
-                if(body.success===true) return body;
-                throw new exceptions[body.errors[0].code.toString()]();
-            })
+        .then(body=>{
+            if(body.success===true) return body.data || body;
+            throw new exceptions[body.errors[0].code.toString()](body.errors[0].data);
+        })
     }
 }
 
