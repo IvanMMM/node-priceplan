@@ -35,7 +35,6 @@ class PP{
             url:`${this._baseurl}key/${endpoint}`,
             method:method,
             json:true,
-            rejectUnauthorized: false,
             auth:{
                 user:this._key,
                 pass:this._password,
@@ -46,8 +45,18 @@ class PP{
         }else{
             options.json = params;
         }
+        if(this.proxy){
+          options.rejectUnauthorized = false;
+          options.proxy = this.proxy;
+        }
+        let startedAt;
+        if(this.debug){
+          startedAt = Date.now();
+          console.info(`Priceplan: ${method} ${endpoint} >>> ${JSON.stringify(params)}`);
+        }
         return rp(options)
         .then(body=>{
+            if(this.debug) console.info(`Priceplan: ${method} ${endpoint} <<< ${JSON.stringify(body)} <<< ${Date.now() - startedAt}`);
             if(body.success===true) return body.data || body;
             throw new exceptions[body.errors[0].code.toString()](body.errors[0].data);
         })
